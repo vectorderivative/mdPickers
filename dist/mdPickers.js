@@ -1,10 +1,11 @@
 (function() {
 "use strict";
-var module = angular.module("mdPickers", [
+var module = angular.module("vdPickers", [
 	"ngMaterial",
 	"ngAnimate",
 	"ngAria"
 ]); 
+
 
 module.controller('DatePickerCtrl', ['$scope', '$mdDialog', 'currentDate', '$mdMedia', function($scope, $mdDialog, currentDate, $mdMedia) {
     var self = this;
@@ -65,28 +66,28 @@ module.factory("$mdDatePicker", ["$mdDialog", function($mdDialog) {
         return $mdDialog.show({
             controller: 'DatePickerCtrl',
             controllerAs: 'datepicker',
-            template: '<md-dialog aria-label="" class="md-datepicker" ng-class="{ \'portrait\': !$mdMedia(\'gt-md\') }">' +
+            template: '<md-dialog aria-label="" class="vd-datepicker" ng-class="{ \'portrait\': !$mdMedia(\'gt-md\') }">' +
                           '<md-dialog-content layout="row" layout-wrap>' +
                             '<div layout="column" layout-align="start center">' +
-                              '<md-toolbar layout-align="center center" class="md-datepicker-dow md-primary"><span>{{ datepicker.currentMoment.format("dddd") }}</span></md-toolbar>' +
-                              '<md-toolbar layout-align="center center" class="md-datepicker-date md-hue-1 md-primary" layout="column">' +
-                                '<div class="md-datepicker-month">{{ datepicker.currentMoment.format("MMM") }}</div>' +
-                                '<div class="md-datepicker-day">{{ datepicker.currentMoment.format("DD") }}</div>' +
-                                '<md-select class="md-datepicker-year" placeholder="{{ datepicker.currentMoment.format(\'YYYY\') }}" ng-model="year" ng-change="datepicker.setYear()">' +
+                              '<md-toolbar layout-align="center center" class="vd-datepicker-dow md-primary"><span>{{ datepicker.currentMoment.format("dddd") }}</span></md-toolbar>' +
+                              '<md-toolbar layout-align="center center" class="mv-datepicker-date md-hue-1 md-primary" layout="column">' +
+                                '<div class="vd-datepicker-month">{{ datepicker.currentMoment.format("MMM") }}</div>' +
+                                '<div class="vd-datepicker-day">{{ datepicker.currentMoment.format("DD") }}</div>' +
+                                '<md-select class="vd-datepicker-year" placeholder="{{ datepicker.currentMoment.format(\'YYYY\') }}" ng-model="year" ng-change="datepicker.setYear()">' +
                                   '<md-option ng-value="year" ng-repeat="year in yearsOptions">{{ year }}</md-option>' +
                                 '</md-select>' +
                               '</md-toolbar>' +
                             '</div>' +
-                            '<div layout="column" layout-align="start center" class="md-datepicker-calendar">' +
-                              '<div layout="row" layout-align="space-between center" class="md-datepicker-monthyear">' +
+                            '<div layout="column" layout-align="start center" class="vd-datepicker-calendar">' +
+                              '<div layout="row" layout-align="space-between center" class="vd-datepicker-monthyear">' +
                                 '<md-button aria-label="mese precedente" class="md-icon-button" ng-click="datepicker.prevMonth()"><md-icon md-font-set="material-icons"> chevron_left </md-icon></md-button>' +
                                 '{{ datepicker.currentMoment.format("MMMM YYYY") }}' +
                                 '<md-button aria-label="mese successivo" class="md-icon-button" ng-click="datepicker.nextMonth()"><md-icon md-font-set="material-icons"> chevron_right </md-icon></md-button>' +
                               '</div>' +
-                              '<div layout="row" layout-align="space-around center" class="md-datepicker-week-days">' +
+                              '<div layout="row" layout-align="space-around center" class="vd-datepicker-week-days">' +
                                 '<div layout layout-align="center center" ng-repeat="d in datepicker.weekDays track by $index">{{ d }}</div>' +
                               '</div>' +
-                              '<div layout="row" layout-wrap class="md-datepicker-days">' +
+                              '<div layout="row" layout-wrap class="vd-datepicker-days">' +
                                 '<div layout layout-align="center center" ng-repeat-start="n in datepicker.getDaysInMonth() track by $index">' +
                                   '<md-button aria-label="seleziona giorno" ng-if="n !== false" ng-class="{\'md-accent\': datepicker.currentMoment.date() == n}" ng-click="datepicker.selectDate(n)">{{ n }}</md-button>' +
                                 '</div>' +
@@ -128,4 +129,5 @@ module.directive("mdDatePicker", ["$mdDatePicker", "$timeout", function($mdDateP
         }
     }
 }]);
+
 })();
