@@ -1,4 +1,4 @@
-var module = angular.module("mdPickers", [
+var module = angular.module("vdPickers", [
 	"ngMaterial",
 	"ngAnimate",
 	"ngAria"
